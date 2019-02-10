@@ -28,11 +28,12 @@ def clean_sentence(txt):
     txt = txt.replace("\n", " ")
     txt = txt.replace(".", " ")
     txt = txt.replace("?", " ")
+    txt = txt.replace("!", "")    
     txt = re.sub("^[MDCLXVI]+$", "", txt)
     txt = re.sub("^[0-9]", "", txt)
     txt = re.sub("^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,9})$", "", txt)
     txt = re.sub(" \d+", "", txt)
-    return txt
+    return txt.lower()
 
 class SentencesByChar(markovify.Text):
     def word_split(self, sentence):
